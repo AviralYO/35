@@ -59,3 +59,8 @@
                       (if (and (null? left) (null? right))
                           (+ leaves 1)
                           leaves))))))))
+
+; print-height-and-leaves emits (height leaf-count), including (0 0) for empty.
+(define (print-height-and-leaves tree)
+  (display (tree-statistics tree))
+  (newline))
