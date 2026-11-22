@@ -25,3 +25,14 @@ expression(Numbers, node(Op, Precedence, Left, Right), Value) :-
     expression(LeftNumbers, Left, LeftValue),
     expression(RightNumbers, Right, RightValue),
     combine(Op, LeftValue, RightValue, Value, Precedence).
+
+% operand_text(+Tree, +ParentPrecedence, +Side, -Text).
+operand_text(Tree, ParentPrecedence, Side, Text) :-
+    expression_text(Tree, Raw),
+    ( Tree = node(_, ChildPrecedence, _, _),
+      ( ChildPrecedence < ParentPrecedence
+      ; Side == right, ChildPrecedence =:= ParentPrecedence
+      )
+    -> atomics_to_string(['(', Raw, ')'], Text)
+    ;  Text = Raw
+    ).
