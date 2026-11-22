@@ -16,3 +16,9 @@ solve(Active, Solution) :-
 count_solutions(Active, N) :-
     findall(Solution, solve(Active, Solution), Solutions),
     length(Solutions, N).
+
+% main: print exactly one solution of the original eight clues.
+main :-
+    once(solve([1,2,3,4,5,6,7,8], Solution)),
+    forall(member(p(Name, Dept, Lang, Project), Solution),
+           format('~a = [~a, ~a, ~a]~n', [Name, Dept, Lang, Project])).
