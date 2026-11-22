@@ -3,7 +3,7 @@
 Prepared assignment files for **group 35**: four definition-only solutions,
 four test files, two development skills, prompt records, and the P1 report.
 This clean copy has no .git directory or previous Git history. Initialize Git
-yourself when ready. See [SUBMISSION_CHECKLIST.md](SUBMISSION_CHECKLIST.md).
+yourself when ready.
 
 | Problem | Source | Required entry points | Tests |
 | --- | --- | --- | --- |
