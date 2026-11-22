@@ -22,3 +22,9 @@ main :-
     once(solve([1,2,3,4,5,6,7,8], Solution)),
     forall(member(p(Name, Dept, Lang, Project), Solution),
            format('~a = [~a, ~a, ~a]~n', [Name, Dept, Lang, Project])).
+
+% clue(+Number, +Solution): the numbered clue holds in a ground candidate.
+clue(1, Solution) :-
+    member(p(Name, Dept, _, 'AI'), Solution),
+    Dept \= research,
+    Name \= 'Dana'.
