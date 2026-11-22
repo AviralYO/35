@@ -30,3 +30,7 @@
                               original)))
                 (if insert? (cons x children) children)))))
     insert-list))
+
+; insert-if-short specializes the generic inserter with the predicate length < n.
+(define (insert-if-short x lst n)
+  ((make-inserter x (lambda (size) (< size n))) lst))
