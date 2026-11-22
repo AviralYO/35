@@ -44,3 +44,12 @@ expression_text(node(Op, Precedence, Left, Right), Text) :-
     operand_text(Left, Precedence, left, LeftText),
     operand_text(Right, Precedence, right, RightText),
     atomics_to_string([LeftText, Op, RightText], Text).
+
+% generate_equation(+Numbers, -Equation): one answer per valid tree pair.
+generate_equation(Numbers, Equation) :-
+    split_nonempty(Numbers, LeftNumbers, RightNumbers),
+    expression(LeftNumbers, Left, Value),
+    expression(RightNumbers, Right, Value),
+    expression_text(Left, LeftText),
+    expression_text(Right, RightText),
+    atomics_to_string([LeftText, '=', RightText], Equation).
