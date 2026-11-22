@@ -32,3 +32,11 @@
 (define (print-inorder tree)
   (display (traversal-values tree 'inorder))
   (newline))
+
+; print-all-traversals emits inorder, preorder, then postorder.
+(define (print-all-traversals tree)
+  (print-inorder tree)
+  (display (traversal-values tree 'preorder))
+  (newline)
+  (display (traversal-values tree 'postorder))
+  (newline))
