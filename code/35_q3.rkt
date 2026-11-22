@@ -27,3 +27,8 @@
             (walk (cons left (cons right (cons value rest))) backwards)))))
       (else
        (walk (cdr pending) (cons (car pending) backwards))))))
+
+; print-inorder emits the left-node-right value list on one line.
+(define (print-inorder tree)
+  (display (traversal-values tree 'inorder))
+  (newline))
