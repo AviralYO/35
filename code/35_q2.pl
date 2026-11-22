@@ -53,3 +53,8 @@ generate_equation(Numbers, Equation) :-
     expression_text(Left, LeftText),
     expression_text(Right, RightText),
     atomics_to_string([LeftText, '=', RightText], Equation).
+
+% all_equations(+Numbers, -Equations): sorted, duplicate-free string answers.
+all_equations(Numbers, Equations) :-
+    findall(Equation, generate_equation(Numbers, Equation), Answers),
+    sort(Answers, Equations).
