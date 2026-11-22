@@ -16,3 +16,17 @@
               forward
               (restore (cdr remaining) (cons (car remaining) forward))))
         (collect (cdr rest) (cons (f (car rest)) backwards)))))
+
+; make-inserter closes over x and len-ok?; only original children are visited.
+(define (make-inserter x len-ok?)
+  (letrec ((insert-list
+            (lambda (original)
+              (let* ((insert? (len-ok? (my-length original)))
+                     (children
+                      (my-map (lambda (element)
+                                (if (or (null? element) (pair? element))
+                                    (insert-list element)
+                                    element))
+                              original)))
+                (if insert? (cons x children) children)))))
+    insert-list))
