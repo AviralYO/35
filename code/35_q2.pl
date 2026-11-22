@@ -15,3 +15,13 @@ combine('/', A, B, V, 2) :-
     B =\= 0,
     0 =:= A rem B,
     V is A // B.
+
+% expression(+Numbers, -Tree, -Value): every ordered binary expression tree.
+expression([Number], num(Number), Number) :-
+    integer(Number),
+    Number >= 0.
+expression(Numbers, node(Op, Precedence, Left, Right), Value) :-
+    split_nonempty(Numbers, LeftNumbers, RightNumbers),
+    expression(LeftNumbers, Left, LeftValue),
+    expression(RightNumbers, Right, RightValue),
+    combine(Op, LeftValue, RightValue, Value, Precedence).
