@@ -1,0 +1,7 @@
+.tools/
+tmp/
+__pycache__/
+compiled/
+*.zo
+*.dep
+
