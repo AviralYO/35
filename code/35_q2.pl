@@ -58,3 +58,8 @@ generate_equation(Numbers, Equation) :-
 all_equations(Numbers, Equations) :-
     findall(Equation, generate_equation(Numbers, Equation), Answers),
     sort(Answers, Equations).
+
+% count_equations(+Numbers, -N): N is the number of canonical equations.
+count_equations(Numbers, N) :-
+    all_equations(Numbers, Equations),
+    length(Equations, N).
