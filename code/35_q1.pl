@@ -11,3 +11,8 @@ candidate([p('Alex', DA, LA, PA), p('Ben', DB, LB, PB),
 solve(Active, Solution) :-
     candidate(Solution),
     forall(member(Number, Active), clue(Number, Solution)).
+
+% count_solutions(+Active, -N): N counts all assignments satisfying Active.
+count_solutions(Active, N) :-
+    findall(Solution, solve(Active, Solution), Solutions),
+    length(Solutions, N).
