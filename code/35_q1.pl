@@ -6,3 +6,8 @@ candidate([p('Alex', DA, LA, PA), p('Ben', DB, LB, PB),
     permutation([research, development, design, testing], [DA, DB, DC, DD]),
     permutation([python, java, 'c++', javascript], [LA, LB, LC, LD]),
     permutation(['AI', web, embedded, data], [PA, PB, PC, PD]).
+
+% solve(+Active, -Solution): a candidate satisfies every selected clue.
+solve(Active, Solution) :-
+    candidate(Solution),
+    forall(member(Number, Active), clue(Number, Solution)).
