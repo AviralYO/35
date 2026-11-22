@@ -34,3 +34,11 @@
 ; insert-if-short specializes the generic inserter with the predicate length < n.
 (define (insert-if-short x lst n)
   ((make-inserter x (lambda (size) (< size n))) lst))
+
+; print-insert-result reads exactly x, lst, n, in that order, without prompts.
+(define (print-insert-result)
+  (let* ((x (read))
+         (lst (read))
+         (n (read)))
+    (display (insert-if-short x lst n))
+    (newline)))
