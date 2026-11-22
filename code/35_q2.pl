@@ -36,3 +36,11 @@ operand_text(Tree, ParentPrecedence, Side, Text) :-
     -> atomics_to_string(['(', Raw, ')'], Text)
     ;  Text = Raw
     ).
+
+% expression_text(+Tree, -Text): serialize a tree without parsing or evaluation.
+expression_text(num(Number), Text) :-
+    number_string(Number, Text).
+expression_text(node(Op, Precedence, Left, Right), Text) :-
+    operand_text(Left, Precedence, left, LeftText),
+    operand_text(Right, Precedence, right, RightText),
+    atomics_to_string([LeftText, Op, RightText], Text).
